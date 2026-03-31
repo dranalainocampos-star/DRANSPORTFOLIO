@@ -354,7 +354,38 @@
         <p>&copy; 2026 Dran Ocampos. All rights reserved.</p>
       </footer>
     </div>
+    <div id="chat-widget-wrapper">
+      <div id="chat-cta">Talk to Dran! 👋</div>
+      <button id="chat-widget-button">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"
+          ></path>
+        </svg>
+      </button>
+    </div>
 
+    <div id="chat-container">
+      <div id="chat-header">
+        <span>Dran's AI Assistant</span>
+        <button id="close-chat-btn">✖</button>
+      </div>
+      <div id="chat-box">
+        <div class="message bot">
+          Hi! I'm the AI assistant for Dran Ocampos. Ask me about his web design
+          experience, skills, or projects!
+        </div>
+      </div>
+      <div id="chat-input-area">
+        <input
+          type="text"
+          id="chat-input"
+          placeholder="Type a message..."
+          autocomplete="off"
+        />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
     <script src="js/script.js"></script>
   </body>
 </html>

@@ -515,3 +515,112 @@ footer {
    margin-top: 0;
  }
 }
+/* Wrapper for the button and CTA */
+#chat-widget-wrapper {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 9999;
+}
+
+/* The "Talk to Dran!" CTA Bubble */
+#chat-cta {
+    background: #1877F2;
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    animation: bounce 2s infinite; /* Make it float slightly */
+}
+
+/* The little triangle pointing to the button */
+#chat-cta::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+}
+
+/* Simple bouncing animation for the CTA */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+#chat-widget-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #1877F2; /* 👈 Makes the whole button black */
+    color: white;        /* 👈 Keeps the icon inside white */
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* 👈 Changed shadow to black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+#chat-widget-button:hover { 
+    transform: scale(1.1); 
+    background: #3c70ff; /* Optional: slightly lighter black on hover */
+
+}
+#chat-widget-button:hover { transform: scale(1.1); }
+#chat-widget-button svg { width: 30px; height: 30px; }
+
+/* The Chat Container - Updated to be hidden initially */
+#chat-container {
+    display: none; /* 👈 Hidden by default */
+    position: fixed;
+    bottom: 100px; /* Shifted up so it doesn't cover the button */
+    right: 25px;
+    width: 350px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+/* Header & Close Button */
+#chat-header {
+    background: #000000;
+    color: rgb(255, 255, 255);
+    padding: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#close-chat-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+#close-chat-btn:hover { color: #ddd; }
+
+/* Existing Chat Box Styles (Keep these!) */
+#chat-box { height: 350px; padding: 15px; overflow-y: auto; background: #fafafa; display: flex; flex-direction: column; gap: 10px; }
+.message { padding: 10px 14px; border-radius: 6px; max-width: 80%; font-size: 14.5px; line-height: 1.4; word-wrap: break-word; }
+.user { background: rgb(0, 0, 0); color: white; align-self: flex-end; border-bottom-right-radius: 0; }
+.bot { background: #e9ecef; color: #333; align-self: flex-start; border-bottom-left-radius: 0; }
+#chat-input-area { display: flex; border-top: 1px solid #ddd; background: white; }
+#chat-input { flex: 1; padding: 15px; border: none; outline: none; font-size: 14px; }
+#send-btn { padding: 0 20px; background: #050202; color: white; border: none; cursor: pointer; font-weight: bold; }
+#send-btn:hover { background: #050201; }
