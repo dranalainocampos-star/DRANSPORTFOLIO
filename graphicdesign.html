@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graphic Designs - Dran Ocampos</title>
+    <style>
+      /* CSS Variables - Matching your main page exactly */
+      :root {
+        --bg-color: #fafafa;
+        --text-main: #111827;
+        --text-muted: #4b5563;
+        --border-color: #e5e7eb;
+        --card-bg: #ffffff;
+        --tag-bg: #f3f4f6;
+        --btn-bg: #111827;
+        --btn-text: #ffffff;
+        --btn-outline: #e5e7eb;
+        --btn-outline-text: #111827;
+        --accent-color: #2563eb;
+        --shadow-hover:
+          0 10px 25px -5px rgba(0, 0, 0, 0.1),
+          0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      }
+
+      [data-theme="dark"] {
+        --bg-color: #0f1115;
+        --text-main: #f9fafb;
+        --text-muted: #9ca3af;
+        --border-color: #1f2937;
+        --card-bg: #111418;
+        --tag-bg: #1f2937;
+        --btn-bg: #f9fafb;
+        --btn-text: #111827;
+        --btn-outline: #374151;
+        --btn-outline-text: #f9fafb;
+        --accent-color: #3b82f6;
+        --shadow-hover:
+          0 10px 25px -5px rgba(0, 0, 0, 0.5),
+          0 8px 10px -6px rgba(0, 0, 0, 0.5);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        transition:
+          background-color 0.4s ease,
+          color 0.4s ease,
+          border-color 0.4s ease;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      a {
+        color: var(--text-main);
+        text-decoration: none;
+      }
+
+      .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 20px;
+      }
+
+      .back-btn {
+        background: var(--tag-bg);
+        color: var(--text-main);
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: transform 0.2s;
+      }
+      .back-btn:hover {
+        transform: translateX(-5px);
+        background: var(--border-color);
+      }
+
+      .theme-toggle {
+        background: var(--tag-bg);
+        border: 1px solid var(--border-color);
+        color: var(--text-main);
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      .category-title {
+        font-size: 1.5rem;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        display: inline-block;
+        border-bottom: 3px solid var(--accent-color);
+        padding-bottom: 5px;
+      }
+
+      .design-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        margin-bottom: 40px;
+      }
+
+      .design-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        overflow: hidden;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .design-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .design-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border-color);
+        cursor: pointer;
+      }
+
+      .design-info {
+        padding: 16px;
+      }
+      .design-info h4 {
+        margin-bottom: 4px;
+        font-size: 1.1rem;
+      }
+      .design-info p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin: 0;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 80px;
+        padding-top: 30px;
+        border-top: 1px solid var(--border-color);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        padding-bottom: 20px;
+      }
+
+      /* Modal / Lightbox Styles */
+      .modal {
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .modal.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10000;
+        transition: color 0.2s;
+        user-select: none;
+      }
+
+      .modal-close:hover {
+        color: #d1d5db;
+      }
+
+      .modal-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        padding: 40px;
+        max-width: 1200px;
+        max-height: 100vh;
+        overflow-y: auto;
+      }
+
+      .modal-img-wrapper {
+        flex: 1 1 300px;
+        max-width: 350px;
+      }
+
+      .modal-img-wrapper img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        background: #fff; /* Fallback if transparent */
+      }
+
+      @media (max-width: 768px) {
+        .modal-content {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="page-header">
+        <a href="index.html" class="back-btn">← Back to Main Portfolio</a>
+        <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()">
+          🌓 Toggle Mode
+        </button>
+      </header>
+
+      <div>
+        <h1 style="font-size: 2.5rem; margin-bottom: 10px">Graphic Designs</h1>
+        <p style="font-size: 1.1rem; color: var(--text-muted)">
+          A collection of my creative work, including branding, social media
+          marketing, and print designs.
+        </p>
+      </div>
+
+      <h2 class="category-title">Product Label Design</h2>
+      <div class="design-grid">
+        <div class="design-card">
+          <img
+            src="images/ACs Special Buko Pie V3.png"
+            alt="Facebook Ad"
+            class="design-img"
+            data-var1="images/ACs Special Buko Pie V3.png"
+            data-var2="images/ACs Special Buko Pie V2.png"
+            data-var3="images/ACs Special Buko Pie V1.png"
+          />
+          <div class="design-info">
+            <h4>AC's BUKO PIE</h4>
+            <p>Product label design for buko pie box packaging.</p>
+          </div>
+        </div>
+        <div class="design-card">
+          <img
+            src="images/Soil Grow HIndang Farmers V2.png"
+            alt="Facebook Ad"
+            class="design-img"
+            data-var1="images/Soil Grow HIndang Farmers V2.png"
+            data-var2="images/Soil Grow HIndang Farmers V3.png"
+            data-var3="Images/Soil Grow HIndang Farmers V1.png"
+          />
+          <div class="design-info">
+            <h4>SOIL GROW</h4>
+            <p>Design for coco-based fertilizer sack.</p>
+          </div>
+        </div>
+        <div class="design-card">
+          <img
+            src="images/KIRBYs Charcoal V1.png"
+            alt="Facebook Ad"
+            class="design-img"
+            data-var1="images/KIRBYs Charcoal V1.png"
+            data-var2="images/KIRBYs Charcoal V2.png"
+            data-var3="images/KIRBYs Charcoal V3.png"
+          />
+          <div class="design-info">
+            <h4>KIRBY's Charcoal Briquettes</h4>
+            <p>Product label design for charcoal briquette box packaging.</p>
+          </div>
+        </div>
+        <div class="design-card">
+          <img
+            src="images/Harry's Halal Foods_Beef Steak.png"
+            alt="Facebook Ad"
+            class="design-img"
+            data-var1="images/Harry's Halal Foods_Beef Steak.png"
+            data-var2="images/Harry's Halal Foods_Beef Steak (1).png"
+            data-var3="images/Harry's Halal Foods_Beef Steak (2).png"
+          />
+          <div class="design-info">
+            <h4>Pagana Maranao Beef Steak</h4>
+            <p>Product label design for beef steak bottle packaging.</p>
+          </div>
+        </div>
+        <div class="design-card">
+          <img
+            src="images/Savor The Best.png"
+            alt="Facebook Ad"
+            class="design-img"
+            data-var1="images/Savor The Best.png"
+            data-var2="images/Savor The Best (1).png"
+            data-var3="images/Savor The Best (2).png"
+          />
+          <div class="design-info">
+            <h4>Mapiya's Palapa</h4>
+            <p>Product label design for Palapa bottle packaging.</p>
+          </div>
+        </div>
+        <div class="design-card">
+          <img
+            src="images/Camote Tops (1).png"
+            alt="Facebook Ad"
+            class="design-img"
+            data-var1="images/Camote Tops (1).png"
+            data-var2="images/Camote Tops (2).png"
+            data-var3="images/Camote Tops (3).png"
+          />
+          <div class="design-info">
+            <h4>Summer Juice Coco-Lemon Nectar</h4>
+            <p>Product label design for coco-lemon packaging.</p>
+          </div>
+        </div>
+        <div class="design-card">
+          <img
+            src="images/eco STYLE.png"
+            alt="Facebook Ad"
+            class="design-img"
+            data-var1="images/eco STYLE.png"
+            data-var2="images/1.png"
+            data-var3="images/3.png"
+          />
+          <div class="design-info">
+            <h4>ECOSTYLE</h4>
+            <p>Product label design for Vegan Cake packaging.</p>
+          </div>
+        </div>
+        <div class="design-card">
+          <img
+            src="images/Pabahandi.png"
+            alt="Facebook Ad"
+            class="design-img"
+            data-var1="images/Pabahandi.png"
+            data-var2="images/Pabahandi (1).png"
+            data-var3="images/Pabahandi (2).png"
+          />
+          <div class="design-info">
+            <h4>Pabahandi</h4>
+            <p>Product label design for Tote Bag Tags.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="category-title">Flyers & Print</h2>
+      <div class="design-grid">
+        <div class="design-card">
+          <img src="flyer-1.jpg" alt="Flyer Design" class="design-img" />
+          <div class="design-info">
+            <h4>Church Event Flyer</h4>
+            <p>Print-ready flyer designed for JIL Worldwide.</p>
+          </div>
+        </div>
+        <div class="design-card">
+          <img src="flyer-2.jpg" alt="Flyer Design" class="design-img" />
+          <div class="design-info">
+            <h4>Conference Poster</h4>
+            <p>A4 poster layout for an upcoming seminar.</p>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p>&copy; 2026 Dran Ocampos. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <div id="image-modal" class="modal">
+      <span class="modal-close" id="close-modal">&times;</span>
+      <div class="modal-content">
+        <div class="modal-img-wrapper">
+          <img id="modal-img-1" src="" alt="Variation 1" />
+        </div>
+        <div class="modal-img-wrapper">
+          <img id="modal-img-2" src="" alt="Variation 2" />
+        </div>
+        <div class="modal-img-wrapper">
+          <img id="modal-img-3" src="" alt="Variation 3" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Theme Toggle Logic
+      function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute("data-theme");
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+        html.setAttribute("data-theme", newTheme);
+        const btn = document.getElementById("theme-btn");
+        if (newTheme === "dark") {
+          btn.innerHTML = "☀️ Light Mode";
+        } else {
+          btn.innerHTML = "🌙 Dark Mode";
+        }
+      }
+
+      // Lightbox / Modal Logic
+      const modal = document.getElementById("image-modal");
+      const btnCloseModal = document.getElementById("close-modal");
+
+      const modalImg1 = document.getElementById("modal-img-1");
+      const modalImg2 = document.getElementById("modal-img-2");
+      const modalImg3 = document.getElementById("modal-img-3");
+
+      const images = document.querySelectorAll(".design-img");
+
+      // Open Modal
+      images.forEach((img) => {
+        img.addEventListener("click", function () {
+          // Get variations from data attributes, fallback to original src if empty
+          const var1 = this.getAttribute("data-var1") || this.src;
+          const var2 = this.getAttribute("data-var2") || this.src;
+          const var3 = this.getAttribute("data-var3") || this.src;
+
+          modalImg1.src = var1;
+          modalImg2.src = var2;
+          modalImg3.src = var3;
+
+          modal.classList.add("show");
+        });
+      });
+
+      // Close Modal Function
+      function closeModal() {
+        modal.classList.remove("show");
+      }
+
+      // Close on 'X' click
+      btnCloseModal.addEventListener("click", closeModal);
+
+      // Close when clicking outside the images
+      modal.addEventListener("click", function (e) {
+        if (
+          e.target === modal ||
+          e.target.classList.contains("modal-content")
+        ) {
+          closeModal();
+        }
+      });
+
+      // Close on 'Escape' key press
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("show")) {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>
