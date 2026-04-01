@@ -96,17 +96,20 @@ async function sendMessage() {
     const typingId = appendMessage('Typing...', 'bot');
 
     try {
-        // Look here! We are calling YOUR server now, not Groq directly!
+        // This calls the file located at /api/chat.js
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: text }) // We just send the user's text
+            body: JSON.stringify({ message: text }) 
         });
 
-        if (!response.ok) throw new Error("Server Error");
-
         const data = await response.json();
-        document.getElementById(typingId).textContent = data.reply;
+
+        if (data.reply) {
+            document.getElementById(typingId).textContent = data.reply;
+        } else {
+            throw new Error(data.error || "No reply");
+        }
 
     } catch (error) {
         console.error(error);
