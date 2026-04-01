@@ -624,3 +624,25 @@ footer {
 #chat-input { flex: 1; padding: 15px; border: none; outline: none; font-size: 14px; }
 #send-btn { padding: 0 20px; background: #050202; color: white; border: none; cursor: pointer; font-weight: bold; }
 #send-btn:hover { background: #050201; }
+
+.badge-icon {
+  width: 20px;
+  height: 20px;
+  fill: #1d9bf0; /* This is the specific blue used by X/Twitter */
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.location-container {
+  display: flex;
+  align-items: center;
+  font-family: sans-serif;
+  gap: 5px;
+  color: #6e6e6e;
+}
+
+.location-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor; /* It will match your text color automatically */
+}
