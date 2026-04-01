@@ -96,24 +96,23 @@ async function sendMessage() {
     const typingId = appendMessage('Typing...', 'bot');
 
     try {
-        // This calls the file located at /api/chat.js
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: text }) 
+            body: JSON.stringify({ message: text }) // ONLY send the user message
         });
 
         const data = await response.json();
 
-        if (data.reply) {
+        if (response.ok) {
             document.getElementById(typingId).textContent = data.reply;
         } else {
-            throw new Error(data.error || "No reply");
+            document.getElementById(typingId).textContent = "Error: " + (data.error || "Server failed");
         }
 
     } catch (error) {
         console.error(error);
-        document.getElementById(typingId).textContent = "Error: Could not reach AI.";
+        document.getElementById(typingId).textContent = "Error: Connection lost.";
     }
 }
 

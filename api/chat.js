@@ -5,8 +5,12 @@ export default async function handler(req, res) {
 
     const { message } = req.body;
 
-    // YOUR SYSTEM PROMPT GOES HERE (The resume info)
-    const systemPrompt = `You are the official portfolio assistant for Dran Ocampos... (Paste your prompt here)`;
+    // THE BRAIN LIVES HERE NOW
+    const systemPrompt = `You are the official portfolio assistant for Dran Ocampos. 
+    Dran is a Web Designer & WordPress Developer from Iligan City.
+    Skills: WordPress (Elementor), HTML, CSS, JavaScript.
+    Experience: Web Lead at JIL, Heartfelt AI Music Publishing.
+    Rules: Be concise. Only answer about Dran.`;
 
     try {
         const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -25,7 +29,12 @@ export default async function handler(req, res) {
         });
 
         const data = await response.json();
-        res.status(200).json({ reply: data.choices[0].message.content });
+        
+        if (data.choices && data.choices[0]) {
+            res.status(200).json({ reply: data.choices[0].message.content });
+        } else {
+            res.status(500).json({ error: "Groq API error" });
+        }
         
     } catch (error) {
         res.status(500).json({ error: error.message });
