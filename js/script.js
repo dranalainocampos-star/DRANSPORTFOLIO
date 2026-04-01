@@ -72,20 +72,18 @@ Technical Skills:
 - Design Tools: Figma, Canva, Adobe Illustrator, Adobe Photoshop.
 
 Experience:
-1. Web & Creative Team Lead at Jesus Is Lord Worldwide Org. (2022 to Present)
-2. Web Designer & WordPress Developer at Heartfelt Al Music Publishing (2024-2025)
-3. Web Designer & WordPress Developer for Louie Jones - Photographer (2023-2024)
-4. Video Editor & Content Creator for Food Friends Channel (2022-2023)
+- Web & Creative Team Lead at Jesus Is Lord Worldwide Org. (2022 to Present)
+- Web Designer & WordPress Developer at Heartfelt Al Music Publishing (2024-2025)
+- Web Designer & WordPress Developer for Louie Jones - Photographer (2023-2024)
+- Video Editor & Content Creator for Food Friends Channel (2022-2023)
 
 Hobbies:
-1. Chess
-2. Basketball
-3. Bible Reading
-4. Play Guitar
-5. Study About Programming
-6. Research About AI
-
-
+- Chess
+- Basketball
+- Bible Reading
+- Play Guitar
+- Study About Programming
+- Research About AI
 
 Rules: Be polite, incredibly concise (1-2 short paragraphs max), and only answer questions related to Dran's professional background. Do not use complex formatting.`;
 async function sendMessage() {
