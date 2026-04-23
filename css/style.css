@@ -280,7 +280,7 @@ p {
 .tag {
  font-family: var(--font-mono);
  background-color: var(--tag-bg);
- color: var(--text-main);
+ color: var(--text-muted);
  padding: 6px 14px;
  border-radius: 999px;
  font-size: 0.85rem;
