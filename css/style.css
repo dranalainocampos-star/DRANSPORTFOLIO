@@ -456,6 +456,30 @@ p {
 .bottom-card li a:hover {
  color: var(--accent-color);
 }
+.bottom-contact-list {
+ display: flex;
+ flex-direction: column;
+ gap: 14px;
+}
+.bottom-contact-list li,
+.bottom-contact-list li a {
+ font-family: var(--font-mono);
+ font-size: 1rem;
+ line-height: 1.55;
+}
+.bottom-connect-actions {
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
+}
+.bottom-connect-actions .btn {
+ width: 100%;
+ justify-content: flex-start;
+ min-height: 48px;
+ padding: 0 18px;
+ font-size: 1rem;
+ white-space: nowrap;
+ }
 
 
 /* Gallery */
