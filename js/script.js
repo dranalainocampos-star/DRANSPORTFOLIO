@@ -76,6 +76,7 @@ Experience:
 - Web Designer & WordPress Developer at Heartfelt Al Music Publishing (2024-2025)
 - Web Designer & WordPress Developer for Louie Jones - Photographer (2023-2024)
 - Video Editor & Content Creator for Food Friends Channel (2022-2023)
+- Web Designer & Developer at The Brilliant Art PH
 
 Hobbies:
 - Chess
