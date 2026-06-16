@@ -72,7 +72,8 @@ Technical Skills:
 - Design Tools: Figma, Canva, Adobe Illustrator, Adobe Photoshop.
 
 Experience:
-- Web & Creative Team Lead at Jesus Is Lord Worldwide Org. (2022 to Present)
+- Full Stack Web Developer at Kimia Kalbasi
+- Web Designer and Developer at Jesus Is Lord Worldwide Org. (2022 to Present)
 - Web Designer & WordPress Developer at Heartfelt Al Music Publishing (2024-2025)
 - Web Designer & WordPress Developer for Louie Jones - Photographer (2023-2024)
 - Video Editor & Content Creator for Food Friends Channel (2022-2023)

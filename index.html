@@ -295,7 +295,7 @@
             </button>
 
             <button class="btn btn-outline" onclick="openResumeModal()">
-              📄 View Resume
+              📄 Request Resume
             </button>
           </div>
         </div>
@@ -404,7 +404,13 @@
           <div class="timeline">
             <div class="timeline-item">
               <div class="timeline-header">
-                <h4>Web & Creative Team Lead</h4>
+                <h4>Full Stack Web Developer</h4>
+              </div>
+              <p>Kimia Kalbasi</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-header">
+                <h4>Web Designer and Developer</h4>
               </div>
               <p>Jesus Is Lord Worldwide Org.</p>
             </div>
@@ -612,7 +618,7 @@
             </button>
 
             <button class="btn btn-outline" onclick="openResumeModal()">
-              📄 View Resume
+              📄 Request Resume
             </button>
           </div>
         </div>
@@ -705,44 +711,14 @@
     </div>
 
     <div id="resumeModal" class="modal">
-      <div class="modal-content">
+      <div class="modal-content" style="max-width: 420px; text-align: center">
         <span class="close-modal" onclick="closeResumeModal()">&times;</span>
-        <h2 style="margin-top: 0">My Resume</h2>
-
-        <div
-          class="pdf-container"
-          style="
-            overflow-y: auto;
-            overflow-x: hidden;
-            max-height: 65vh;
-            text-align: center;
-            background: #e9ecef;
-            padding: 20px;
-          "
-        >
-          <img
-            src="images/DRANRESUME.png"
-            alt="Dran Ocampos Resume"
-            style="
-              max-width: 100%;
-              height: auto;
-              display: block;
-              margin: 0 auto;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-              border-radius: 4px;
-            "
-          />
-        </div>
-
+        <h2 style="margin-top: 0">Request Sent</h2>
+        <p style="margin-bottom: 0">Request is sent to Dran Ocampos.</p>
         <div class="modal-actions">
-          <a
-            href="images/DRANRESUME.png"
-            download="DRANRESUME.png"
-            class="btn btn-primary"
-            style="text-decoration: none"
-          >
-            ⬇️ Download Resume
-          </a>
+          <button class="btn btn-primary" onclick="closeResumeModal()">
+            OK
+          </button>
         </div>
       </div>
     </div>

@@ -19,7 +19,8 @@ export default async function handler(req, res) {
     - Education: Bachelor of Engineering Technology (MSU-IIT, 2024).
     
     DETAILED EXPERIENCE:
-    - Web & Creative Team Lead (Jesus Is Lord Worldwide Org, 2022-Present): Managing brand identity and web presence.
+    - Full Stack Web Developer (Kimia Kalbasi): Building full-stack web experiences.
+    - Web Designer and Developer (Jesus Is Lord Worldwide Org, 2022-Present): Managing brand identity and web presence.
     - Web Designer (Heartfelt AI Music Publishing, 2024-2025): Modern digital solutions for creators.
     - Freelance Designer (Louie Jones Photography, 2023-2024): High-end WordPress portfolio sites.
     - Video Editor/Content Creator (Food Friends Channel, 2022-2023).
