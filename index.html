@@ -288,7 +288,7 @@
             <button
               class="btn btn-outline"
               onclick="
-                window.open('https://cal.com/dran-ocampos-n5j36a/30min?overlayCalendar=true')
+                window.open('https://cal.com/dran-ocampos-n5j36a/15min?overlayCalendar=true')
               "
             >
               &#9742; Schedule Call
@@ -631,7 +631,7 @@
             <button
               class="btn btn-outline"
               onclick="
-                window.open('https://cal.com/dran-ocampos-n5j36a/30min?overlayCalendar=true')
+                window.open('https://cal.com/dran-ocampos-n5j36a/15min?overlayCalendar=true')
               "
             >
               &#9742; Schedule Call
@@ -727,6 +727,89 @@
           autocomplete="off"
         />
         <button id="send-btn">Send</button>
+      </div>
+    </div>
+
+    <div
+      id="recruiter-call-modal"
+      class="recruiter-call-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="recruiter-modal-title"
+      aria-describedby="recruiter-modal-description"
+      aria-hidden="true"
+    >
+      <div class="recruiter-modal-card" role="document">
+        <button
+          class="recruiter-modal-close"
+          type="button"
+          aria-label="Close schedule call popup"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+
+        <div class="recruiter-modal-accent" aria-hidden="true">
+          <span class="recruiter-modal-status"><i></i> Open to work</span>
+          <div class="recruiter-avatar-wrap">
+            <img src="images/profile2.png" alt="" />
+            <span>DO</span>
+          </div>
+          <p>Web design · WordPress · Front-end</p>
+        </div>
+
+        <div class="recruiter-modal-copy">
+          <h2 id="recruiter-modal-title">
+            Your next web designer is one call away.
+          </h2>
+          <p id="recruiter-modal-description">
+            Meet Dran—a designer and developer who turns complex ideas into
+            clean, useful digital experiences. Skip the email back-and-forth
+            and choose a time that works for you.
+          </p>
+
+          <div class="recruiter-modal-details" aria-label="Call details">
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" />
+              </svg>
+              15 minutes
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18M12 3c2.3 2.5 3.5 5.5 3.5 9s-1.2 6.5-3.5 9c-2.3-2.5-3.5-5.5-3.5-9S9.7 5.5 12 3z" />
+              </svg>
+              Your timezone
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12l4 4L19 6" />
+              </svg>
+              Free intro call
+            </span>
+          </div>
+
+          <div class="recruiter-modal-actions">
+            <a
+              class="recruiter-book-button"
+              href="https://cal.com/dran-ocampos-n5j36a/15min?overlayCalendar=true"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Schedule a call
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M14 7l5 5-5 5" />
+              </svg>
+            </a>
+            <button class="recruiter-explore-button" type="button">
+              Explore portfolio first
+            </button>
+          </div>
+          <small>No pressure—just a focused conversation about the role.</small>
+        </div>
       </div>
     </div>
 

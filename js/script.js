@@ -137,3 +137,82 @@ sendBtn.addEventListener('click', sendMessage);
 chatInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') sendMessage();
 });
+
+// ==========================================
+// 4. FIRST-VISIT RECRUITER CALL POPUP
+// ==========================================
+const recruiterModal = document.getElementById('recruiter-call-modal');
+
+if (recruiterModal) {
+    const closeRecruiterModalBtn = recruiterModal.querySelector('.recruiter-modal-close');
+    const explorePortfolioBtn = recruiterModal.querySelector('.recruiter-explore-button');
+    const bookCallBtn = recruiterModal.querySelector('.recruiter-book-button');
+    const focusableElements = recruiterModal.querySelectorAll('a[href], button:not([disabled])');
+    let lastFocusedElement = null;
+
+    function markRecruiterModalSeen() {
+        try {
+            sessionStorage.setItem('dranRecruiterCallSeen', 'true');
+        } catch (error) {
+            // The modal still works when browser storage is unavailable.
+        }
+    }
+
+    function openRecruiterModal() {
+        lastFocusedElement = document.activeElement;
+        recruiterModal.classList.add('is-visible');
+        recruiterModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('recruiter-modal-open');
+        window.setTimeout(() => closeRecruiterModalBtn.focus(), 100);
+    }
+
+    function closeRecruiterModal() {
+        recruiterModal.classList.remove('is-visible');
+        recruiterModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('recruiter-modal-open');
+        markRecruiterModalSeen();
+
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+        }
+    }
+
+    closeRecruiterModalBtn.addEventListener('click', closeRecruiterModal);
+    explorePortfolioBtn.addEventListener('click', closeRecruiterModal);
+    bookCallBtn.addEventListener('click', closeRecruiterModal);
+
+    recruiterModal.addEventListener('click', (event) => {
+        if (event.target === recruiterModal) closeRecruiterModal();
+    });
+
+    recruiterModal.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeRecruiterModal();
+            return;
+        }
+
+        if (event.key === 'Tab' && focusableElements.length) {
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (event.shiftKey && document.activeElement === firstElement) {
+                event.preventDefault();
+                lastElement.focus();
+            } else if (!event.shiftKey && document.activeElement === lastElement) {
+                event.preventDefault();
+                firstElement.focus();
+            }
+        }
+    });
+
+    let recruiterModalSeen = false;
+    try {
+        recruiterModalSeen = sessionStorage.getItem('dranRecruiterCallSeen') === 'true';
+    } catch (error) {
+        recruiterModalSeen = false;
+    }
+
+    if (!recruiterModalSeen) {
+        window.setTimeout(openRecruiterModal, 700);
+    }
+}
