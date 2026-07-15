@@ -152,7 +152,7 @@ if (recruiterModal) {
 
     function markRecruiterModalSeen() {
         try {
-            sessionStorage.setItem('dranRecruiterCallSeen', 'true');
+            localStorage.setItem('dranRecruiterCallSeen', 'true');
         } catch (error) {
             // The modal still works when browser storage is unavailable.
         }
@@ -207,12 +207,12 @@ if (recruiterModal) {
 
     let recruiterModalSeen = false;
     try {
-        recruiterModalSeen = sessionStorage.getItem('dranRecruiterCallSeen') === 'true';
+        recruiterModalSeen = localStorage.getItem('dranRecruiterCallSeen') === 'true';
     } catch (error) {
         recruiterModalSeen = false;
     }
 
     if (!recruiterModalSeen) {
-        window.setTimeout(openRecruiterModal, 700);
+        window.setTimeout(openRecruiterModal, 10000);
     }
 }
