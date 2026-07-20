@@ -13,84 +13,6 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <style>
-      /* --- Modal Styles --- */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 2000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(4px);
-        align-items: center;
-        justify-content: center;
-      }
-      .modal-content {
-        background-color: #ffffff;
-        color: #333333;
-        margin: auto;
-        padding: 24px;
-        border-radius: 12px;
-        width: 90%;
-        max-width: 800px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        position: relative;
-        animation: modalFadeIn 0.3s ease-out;
-      }
-      @keyframes modalFadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .close-modal {
-        position: absolute;
-        right: 20px;
-        top: 15px;
-        font-size: 28px;
-        font-weight: 700;
-        cursor: pointer;
-        color: #888;
-        transition: color 0.2s;
-      }
-      .close-modal:hover {
-        color: #111;
-      }
-      .pdf-container {
-        margin: 20px 0;
-        border: 1px solid #eaeaea;
-        border-radius: 8px;
-        overflow: hidden;
-        background: #f9f9f9;
-      }
-      .modal-actions {
-        display: flex;
-        justify-content: center;
-        margin-top: 15px;
-      }
-
-      /* Dark mode support for modal */
-      [data-theme="dark"] .modal-content {
-        background-color: #1e1e1e;
-        color: #f1f1f1;
-        border: 1px solid #333;
-      }
-      [data-theme="dark"] .close-modal {
-        color: #aaa;
-      }
-      [data-theme="dark"] .close-modal:hover {
-        color: #fff;
-      }
-      [data-theme="dark"] .pdf-container {
-        border-color: #333;
-      }
-
       /* --- MOBILE RESPONSIVENESS FIXES --- */
       @media (max-width: 768px) {
         /* 1. Profile Header - Match Reference Image Layout */
@@ -294,9 +216,14 @@
               &#9742; Schedule Call
             </button>
 
-            <button class="btn btn-outline" onclick="openResumeModal()">
-              📄 Request Resume
-            </button>
+            <a
+              class="btn btn-outline"
+              href="images/Dran_Ocampos_Resume.png"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📄 View Resume
+            </a>
           </div>
         </div>
       </header>
@@ -637,9 +564,14 @@
               &#9742; Schedule Call
             </button>
 
-            <button class="btn btn-outline" onclick="openResumeModal()">
-              📄 Request Resume
-            </button>
+            <a
+              class="btn btn-outline"
+              href="images/Dran_Ocampos_Resume.png"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📄 View Resume
+            </a>
           </div>
         </div>
       </div>
@@ -812,37 +744,6 @@
         </div>
       </div>
     </div>
-
-    <div id="resumeModal" class="modal">
-      <div class="modal-content" style="max-width: 420px; text-align: center">
-        <span class="close-modal" onclick="closeResumeModal()">&times;</span>
-        <h2 style="margin-top: 0">Request Sent</h2>
-        <p style="margin-bottom: 0">Request is sent to Dran Ocampos.</p>
-        <div class="modal-actions">
-          <button class="btn btn-primary" onclick="closeResumeModal()">
-            OK
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      function openResumeModal() {
-        document.getElementById("resumeModal").style.display = "flex";
-      }
-
-      function closeResumeModal() {
-        document.getElementById("resumeModal").style.display = "none";
-      }
-
-      // Close modal if user clicks outside of the modal content
-      window.onclick = function (event) {
-        var modal = document.getElementById("resumeModal");
-        if (event.target === modal) {
-          closeResumeModal();
-        }
-      };
-    </script>
 
     <script src="js/script.js"></script>
   </body>
